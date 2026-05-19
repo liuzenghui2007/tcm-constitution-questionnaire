@@ -4,6 +4,8 @@ export interface AppConfig {
   copywritingMode: CopywritingMode;
 }
 
+// export type CopywritingMode = 'concise' | 'detailed';
+
 const appConfig: AppConfig = {
   copywritingMode: 'detailed', // 修改此值切换文案版本
 };
