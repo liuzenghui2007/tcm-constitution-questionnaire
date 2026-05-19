@@ -1,0 +1,150 @@
+{
+  "version": "GB/T 46939-2025",
+  "scaleOptions": [
+    { "value": 1, "label": "没有", "description": "根本不" },
+    { "value": 2, "label": "很少", "description": "有一点" },
+    { "value": 3, "label": "有时", "description": "有些" },
+    { "value": 4, "label": "经常", "description": "相当" },
+    { "value": 5, "label": "总是", "description": "非常" }
+  ],
+  "questions": [
+    { "id": "q1", "text": "您精力充沛吗？", "gender": "all" },
+    { "id": "q2", "text": "您容易疲乏吗？", "gender": "all" },
+    { "id": "q3", "text": "您感到闷闷不乐、情绪低沉吗？", "gender": "all" },
+    {
+      "id": "q4",
+      "text": "您比一般人耐受不了寒冷（冬天的寒冷，夏天的冷空调、电扇等）吗？",
+      "gender": "all"
+    },
+    { "id": "q5", "text": "您容易气短（呼吸短促，接不上气）吗？", "gender": "all" },
+    { "id": "q6", "text": "您容易心慌吗？", "gender": "all" },
+    { "id": "q7", "text": "您胃脘部、背部或腰膝部怕冷吗？", "gender": "all" },
+    { "id": "q8", "text": "您感到怕冷、衣服比别人穿得多吗？", "gender": "all" },
+    { "id": "q9", "text": "您感觉身体、脸上发热吗？", "gender": "all" },
+    { "id": "q10", "text": "您皮肤或口唇干吗？", "gender": "all" },
+    { "id": "q11", "text": "您面部两颧潮红或偏红吗？", "gender": "all" },
+    { "id": "q12", "text": "您感到身体沉重不轻松或不爽快吗？", "gender": "all" },
+    { "id": "q13", "text": "您腹部肥满松软吗？", "gender": "all" },
+    { "id": "q14", "text": "您嘴里有黏黏的感觉吗？", "gender": "all" },
+    { "id": "q15", "text": "您面部或鼻部有油腻感或者油亮发光吗？", "gender": "all" },
+    { "id": "q16", "text": "您小便时尿道有发热感、尿色浓（深）吗？", "gender": "all" },
+    {
+      "id": "q17",
+      "text": "您带下色黄（白带颜色发黄）吗？（限女性回答）",
+      "gender": "female"
+    },
+    { "id": "q18", "text": "您的阴囊部位潮湿吗？（限男性回答）", "gender": "male" },
+    { "id": "q19", "text": "您身体上有哪里疼痛吗？", "gender": "all" },
+    { "id": "q20", "text": "您面色晦暗或容易出现褐斑吗？", "gender": "all" },
+    { "id": "q21", "text": "您口唇颜色偏暗吗？", "gender": "all" },
+    { "id": "q22", "text": "您容易精神紧张、焦虑不安吗？", "gender": "all" },
+    { "id": "q23", "text": "您多愁善感、感情脆弱吗？", "gender": "all" },
+    { "id": "q24", "text": "您没有感冒时也会打喷嚏吗？", "gender": "all" },
+    {
+      "id": "q25",
+      "text": "您容易过敏（对药物、食物、气味、花粉或在季节交替、气候变化时）吗？",
+      "gender": "all"
+    },
+    {
+      "id": "q26",
+      "text": "您的皮肤容易起荨麻疹（风团、风疹块、风疙瘩）吗？",
+      "gender": "all"
+    },
+    { "id": "q27", "text": "您的皮肤一抓就红，并出现抓痕吗？", "gender": "all" }
+  ],
+  "constitutions": [
+    {
+      "id": "pinghe",
+      "name": "平和质",
+      "type": "balanced",
+      "items": [
+        { "questionId": "q1", "reverse": false },
+        { "questionId": "q2", "reverse": true },
+        { "questionId": "q3", "reverse": true },
+        { "questionId": "q4", "reverse": true }
+      ]
+    },
+    {
+      "id": "qixu",
+      "name": "气虚质",
+      "type": "biased",
+      "items": [
+        { "questionId": "q2", "reverse": false },
+        { "questionId": "q5", "reverse": false },
+        { "questionId": "q6", "reverse": false }
+      ]
+    },
+    {
+      "id": "yangxu",
+      "name": "阳虚质",
+      "type": "biased",
+      "items": [
+        { "questionId": "q7", "reverse": false },
+        { "questionId": "q8", "reverse": false },
+        { "questionId": "q4", "reverse": false }
+      ]
+    },
+    {
+      "id": "yinxu",
+      "name": "阴虚质",
+      "type": "biased",
+      "items": [
+        { "questionId": "q9", "reverse": false },
+        { "questionId": "q10", "reverse": false },
+        { "questionId": "q11", "reverse": false }
+      ]
+    },
+    {
+      "id": "tanshi",
+      "name": "痰湿质",
+      "type": "biased",
+      "items": [
+        { "questionId": "q12", "reverse": false },
+        { "questionId": "q13", "reverse": false },
+        { "questionId": "q14", "reverse": false }
+      ]
+    },
+    {
+      "id": "shire",
+      "name": "湿热质",
+      "type": "biased",
+      "items": [
+        { "questionId": "q15", "reverse": false },
+        { "questionId": "q16", "reverse": false },
+        { "questionId": "q17", "reverse": false },
+        { "questionId": "q18", "reverse": false }
+      ]
+    },
+    {
+      "id": "xueyu",
+      "name": "血瘀质",
+      "type": "biased",
+      "items": [
+        { "questionId": "q19", "reverse": false },
+        { "questionId": "q20", "reverse": false },
+        { "questionId": "q21", "reverse": false }
+      ]
+    },
+    {
+      "id": "qiyu",
+      "name": "气郁质",
+      "type": "biased",
+      "items": [
+        { "questionId": "q3", "reverse": false },
+        { "questionId": "q22", "reverse": false },
+        { "questionId": "q23", "reverse": false }
+      ]
+    },
+    {
+      "id": "tebing",
+      "name": "特禀质",
+      "type": "biased",
+      "items": [
+        { "questionId": "q24", "reverse": false },
+        { "questionId": "q25", "reverse": false },
+        { "questionId": "q26", "reverse": false },
+        { "questionId": "q27", "reverse": false }
+      ]
+    }
+  ]
+}

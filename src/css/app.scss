@@ -1,1 +1,24 @@
 // app global css
+
+/* 主内容区：PC 最大宽度 800px 居中；平板两侧留白 */
+.app-content {
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+@media (min-width: 600px) and (max-width: 1023.98px) {
+  .app-content {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-content {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
