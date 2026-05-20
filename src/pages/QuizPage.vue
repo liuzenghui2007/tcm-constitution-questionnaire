@@ -61,7 +61,7 @@
 
       <!-- 全部显示模式：提交按钮 -->
       <div v-else class="q-pa-md text-center">
-        <q-btn color="primary" size="lg" label="提交" :disable="!canSubmit" @click="submitQuiz" />
+        <q-btn color="primary" size="lg" label="提交" @click="submitQuiz" />
       </div>
     </div>
   </q-page>
@@ -136,9 +136,18 @@ function nextQuestion() {
 function goToFirstUnanswered() {
   const firstUnanswered = unansweredQuestions.value[0];
   if (firstUnanswered) {
-    const index = filteredQuestions.value.findIndex((q) => q.id === firstUnanswered.id);
-    if (index >= 0) {
-      setCurrentPage(index);
+    if (quizDisplayMode === 'all') {
+      // all 模式：滚动到未答题目
+      const el = document.getElementById(`question-heading-${firstUnanswered.id}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    } else {
+      // single 模式：跳转页码
+      const index = filteredQuestions.value.findIndex((q) => q.id === firstUnanswered.id);
+      if (index >= 0) {
+        setCurrentPage(index);
+      }
     }
   }
 }
