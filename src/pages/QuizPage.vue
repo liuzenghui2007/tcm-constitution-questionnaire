@@ -3,7 +3,7 @@
     <div class="app-content">
       <ProgressBar
         :progress="progress"
-        :current="currentPage + 1"
+        :current="quizDisplayMode === 'single' ? currentPage + 1 : answeredCount"
         :total="filteredQuestions.length"
       />
 
@@ -23,17 +23,33 @@
           </template>
         </q-banner>
 
-        <!-- 当前题目 -->
-        <QuestionCard
-          v-if="currentQuestion"
-          :question="currentQuestion"
-          :question-index="currentPage + 1"
-          :model-value="answers[currentQuestion.id]"
-          @update:model-value="handleAnswer($event)"
-        />
+        <!-- 单题模式 -->
+        <template v-if="quizDisplayMode === 'single'">
+          <QuestionCard
+            v-if="currentQuestion"
+            :question="currentQuestion"
+            :question-index="currentPage + 1"
+            :model-value="answers[currentQuestion.id]"
+            @update:model-value="handleAnswer($event)"
+          />
+        </template>
+
+        <!-- 全部显示模式 -->
+        <template v-else>
+          <QuestionCard
+            v-for="(question, index) in filteredQuestions"
+            :key="question.id"
+            :question="question"
+            :question-index="index + 1"
+            :model-value="answers[question.id]"
+            @update:model-value="setAnswer(question.id, $event)"
+          />
+        </template>
       </div>
 
+      <!-- 单题模式：上一题/下一题导航 -->
       <NavigationButtons
+        v-if="quizDisplayMode === 'single'"
         :is-first="currentPage === 0"
         :is-last="currentPage === filteredQuestions.length - 1"
         :can-submit="canSubmit"
@@ -42,6 +58,11 @@
         @submit="submitQuiz"
         @goto-unanswered="goToFirstUnanswered"
       />
+
+      <!-- 全部显示模式：提交按钮 -->
+      <div v-else class="q-pa-md text-center">
+        <q-btn color="primary" size="lg" label="提交" :disable="!canSubmit" @click="submitQuiz" />
+      </div>
     </div>
   </q-page>
 </template>
@@ -54,9 +75,11 @@ import { useQuasar } from 'quasar';
 import ProgressBar from 'src/components/ProgressBar.vue';
 import QuestionCard from 'src/components/QuestionCard.vue';
 import NavigationButtons from 'src/components/NavigationButtons.vue';
+import appConfig from 'src/config/app-config';
 
 const router = useRouter();
 const $q = useQuasar();
+const quizDisplayMode = appConfig.quizDisplayMode;
 const {
   gender,
   answers,
@@ -81,6 +104,10 @@ onMounted(() => {
 
 const currentQuestion = computed(() => {
   return filteredQuestions.value[currentPage.value] || null;
+});
+
+const answeredCount = computed(() => {
+  return filteredQuestions.value.filter((q) => answers.value[q.id] !== undefined).length;
 });
 
 function handleAnswer(value: number) {
@@ -109,9 +136,7 @@ function nextQuestion() {
 function goToFirstUnanswered() {
   const firstUnanswered = unansweredQuestions.value[0];
   if (firstUnanswered) {
-    const index = filteredQuestions.value.findIndex(
-      (q) => q.id === firstUnanswered.id,
-    );
+    const index = filteredQuestions.value.findIndex((q) => q.id === firstUnanswered.id);
     if (index >= 0) {
       setCurrentPage(index);
     }

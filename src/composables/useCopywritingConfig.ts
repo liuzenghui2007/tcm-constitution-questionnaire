@@ -1,5 +1,5 @@
 import { readonly, ref } from 'vue';
-import type { CopywritingMode } from 'src/types/constitution';
+import type { CopywritingMode } from 'src/config/app-config';
 import appConfig from 'src/config/app-config';
 
 const VALID_MODES: CopywritingMode[] = ['concise', 'detailed'];

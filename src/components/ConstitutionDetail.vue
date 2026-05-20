@@ -118,8 +118,8 @@ import type {
   ConstitutionInfo,
   ScoreResult,
   DetailedConstitutionInfo,
-  CopywritingMode,
 } from 'src/types/constitution';
+import type { CopywritingMode } from 'src/config/app-config';
 
 withDefaults(
   defineProps<{

@@ -85,9 +85,6 @@ export type ConstitutionId =
   | 'qiyu'
   | 'tebing';
 
-/** 文案模式 */
-export type CopywritingMode = 'concise' | 'detailed';
-
 /** 药膳方 */
 export interface MedicinalRecipe {
   name: string;
