@@ -9,6 +9,8 @@ export interface AppConfig {
   quizDisplayMode: QuizDisplayMode;
 }
 
+// export type CopywritingMode = 'concise' | 'detailed';
+
 const appConfig: AppConfig = {
   copywritingMode: 'detailed', // 可选值：'concise' | 'detailed'
   quizDisplayMode: 'all', // 可选值：'single' | 'all'
